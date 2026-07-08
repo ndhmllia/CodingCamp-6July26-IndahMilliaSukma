@@ -3,10 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expense &amp; Budget Visualizer</title>
+    <title>Expense Tracker</title>
 
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
 
     <!-- App Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
@@ -15,9 +20,15 @@
 
     <!-- ========== HEADER ========== -->
     <header class="app-header">
-      <h1 class="app-title">Expense &amp; Budget Visualizer</h1>
+      <div class="header-brand">
+        <span class="header-icon">🍃</span>
+        <div class="header-text">
+          <h1 class="app-title">Expense Tracker</h1>
+          <p class="app-subtitle">Track your daily spending beautifully.</p>
+        </div>
+      </div>
       <div class="balance-card">
-        <span class="balance-label">Total Balance</span>
+        <span class="balance-label">💰 Total Spent</span>
         <span class="balance-amount" id="totalBalance">Rp 0</span>
       </div>
     </header>
@@ -27,7 +38,7 @@
 
       <!-- ---------- INPUT FORM ---------- -->
       <section class="form-section" aria-labelledby="formHeading">
-        <h2 id="formHeading" class="section-title">Add New Transaction</h2>
+        <h2 id="formHeading" class="section-title">➕ Add Transaction</h2>
 
         <form id="expenseForm" novalidate>
 
@@ -65,7 +76,10 @@
             </select>
           </div>
 
-          <button type="submit" class="btn-add">Add Transaction</button>
+          <button type="submit" class="btn-add">
+            <span class="btn-add-icon">+</span>
+            Add Transaction
+          </button>
 
         </form>
       </section>
@@ -75,10 +89,14 @@
 
         <!-- Transaction List -->
         <section class="list-section" aria-labelledby="listHeading">
-          <h2 id="listHeading" class="section-title">Transactions</h2>
+          <h2 id="listHeading" class="section-title">🧾 Transactions</h2>
 
           <!-- Shown when there are no transactions yet -->
-          <p class="empty-state" id="emptyState">No transactions yet. Add one above!</p>
+          <div class="empty-state" id="emptyState">
+            <span class="empty-icon">🍃</span>
+            <p class="empty-title">No expenses yet.</p>
+            <p class="empty-sub">Start tracking your spending today!</p>
+          </div>
 
           <ul class="transaction-list" id="transactionList" aria-live="polite">
             <!-- Transaction items injected by script.js -->
@@ -87,10 +105,14 @@
 
         <!-- Pie Chart -->
         <section class="chart-section" aria-labelledby="chartHeading">
-          <h2 id="chartHeading" class="section-title">Spending by Category</h2>
+          <h2 id="chartHeading" class="section-title">📊 Spending by Category</h2>
 
           <!-- Shown when there is no data for the chart -->
-          <p class="empty-state" id="chartEmptyState">Add transactions to see the chart.</p>
+          <div class="empty-state" id="chartEmptyState">
+            <span class="empty-icon">📊</span>
+            <p class="empty-title">Your spending insights will appear here.</p>
+            <p class="empty-sub">Add your first expense to begin.</p>
+          </div>
 
           <div class="chart-wrapper">
             <canvas id="expenseChart" role="img" aria-label="Pie chart of spending by category"></canvas>

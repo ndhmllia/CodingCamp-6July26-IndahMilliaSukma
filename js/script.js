@@ -240,9 +240,9 @@ function loadFromStorage() {
 
 // Category metadata: display order, label, and color
 const CATEGORIES = [
-  { key: 'Food',      color: '#ff6b6b' },
-  { key: 'Transport', color: '#feca57' },
-  { key: 'Fun',       color: '#48dbfb' }
+  { key: 'Food',      color: '#F2B880' },
+  { key: 'Transport', color: '#8DB6A0' },
+  { key: 'Fun',       color: '#D7C49E' }
 ];
 
 // Chart instance — created once, updated in place on every data change
@@ -274,23 +274,47 @@ function initChart() {
         backgroundColor: CATEGORIES.map(function (c) { return c.color; }),
         borderColor    : '#ffffff',
         borderWidth    : 3,
-        hoverOffset    : 10
+        borderRadius   : 8,
+        hoverOffset    : 18
       }]
     },
     options: {
       responsive         : true,
       maintainAspectRatio: true,
+      // Breathing room around the pie
+      layout: {
+        padding: 20
+      },
+      // Smooth fade + grow animation on data change
+      animation: {
+        animateRotate : true,
+        animateScale  : true,
+        duration      : 600,
+        easing        : 'easeInOutQuart'
+      },
       plugins: {
         legend: {
           position: 'bottom',
           labels  : {
-            font     : { size: 13, family: "'Segoe UI', system-ui, sans-serif" },
-            padding  : 16,
-            usePointStyle: true,
-            pointStyleWidth: 10
+            font            : { size: 13, family: "'Plus Jakarta Sans', system-ui, sans-serif", weight: '600' },
+            padding         : 20,
+            usePointStyle   : true,
+            pointStyle      : 'circle',
+            pointStyleWidth : 10,
+            color           : '#5C6E63'
           }
         },
         tooltip: {
+          backgroundColor : 'rgba(255, 255, 255, 0.95)',
+          titleColor      : '#1E2D24',
+          bodyColor       : '#5C6E63',
+          borderColor     : '#E9E6DF',
+          borderWidth     : 1,
+          padding         : 12,
+          cornerRadius    : 12,
+          boxPadding      : 6,
+          titleFont       : { size: 13, weight: '700', family: "'Plus Jakarta Sans', system-ui, sans-serif" },
+          bodyFont        : { size: 13, weight: '500', family: "'Plus Jakarta Sans', system-ui, sans-serif" },
           callbacks: {
             // Show formatted Rupiah in the tooltip instead of raw numbers
             label: function (context) {
@@ -318,9 +342,9 @@ function updateChart() {
 
   if (!hasData) return;   // nothing to draw
 
-  // Push fresh data into the existing chart instance and re-render
+  // Push fresh data into the existing chart instance and re-render with animation
   expenseChart.data.datasets[0].data = totals;
-  expenseChart.update();
+  expenseChart.update('active');
 }
 
 // --- Run on page load ---
