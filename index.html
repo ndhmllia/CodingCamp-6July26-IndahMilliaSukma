@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense &amp; Budget Visualizer</title>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- App Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!-- ========== HEADER ========== -->
+    <header class="app-header">
+      <h1 class="app-title">Expense &amp; Budget Visualizer</h1>
+      <div class="balance-card">
+        <span class="balance-label">Total Balance</span>
+        <span class="balance-amount" id="totalBalance">Rp 0</span>
+      </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="app-main">
+
+      <!-- ---------- INPUT FORM ---------- -->
+      <section class="form-section" aria-labelledby="formHeading">
+        <h2 id="formHeading" class="section-title">Add New Transaction</h2>
+
+        <form id="expenseForm" novalidate>
+
+          <div class="form-group">
+            <label for="itemName">Item Name</label>
+            <input
+              type="text"
+              id="itemName"
+              name="itemName"
+              placeholder="e.g. Lunch, Bus ticket…"
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="itemAmount">Amount (Rp)</label>
+            <input
+              type="number"
+              id="itemAmount"
+              name="itemAmount"
+              placeholder="e.g. 25000"
+              min="1"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="itemCategory">Category</label>
+            <select id="itemCategory" name="itemCategory" required>
+              <option value="" disabled selected>Select a category</option>
+              <option value="Food">🍔 Food</option>
+              <option value="Transport">🚌 Transport</option>
+              <option value="Fun">🎉 Fun</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-add">Add Transaction</button>
+
+        </form>
+      </section>
+
+      <!-- ---------- DASHBOARD (list + chart) ---------- -->
+      <div class="dashboard">
+
+        <!-- Transaction List -->
+        <section class="list-section" aria-labelledby="listHeading">
+          <h2 id="listHeading" class="section-title">Transactions</h2>
+
+          <!-- Shown when there are no transactions yet -->
+          <p class="empty-state" id="emptyState">No transactions yet. Add one above!</p>
+
+          <ul class="transaction-list" id="transactionList" aria-live="polite">
+            <!-- Transaction items injected by script.js -->
+          </ul>
+        </section>
+
+        <!-- Pie Chart -->
+        <section class="chart-section" aria-labelledby="chartHeading">
+          <h2 id="chartHeading" class="section-title">Spending by Category</h2>
+
+          <!-- Shown when there is no data for the chart -->
+          <p class="empty-state" id="chartEmptyState">Add transactions to see the chart.</p>
+
+          <div class="chart-wrapper">
+            <canvas id="expenseChart" role="img" aria-label="Pie chart of spending by category"></canvas>
+          </div>
+        </section>
+
+      </div><!-- /.dashboard -->
+
+    </main><!-- /.app-main -->
+
+    <!-- App Script (deferred so DOM is ready) -->
+    <script src="js/script.js"></script>
+
+  </body>
+</html>
