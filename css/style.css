@@ -5,21 +5,21 @@
 /* ---------- 1. CSS Custom Properties (Design Tokens) ---------- */
 :root {
   /* Brand palette */
-  --color-primary:       #6c63ff;
-  --color-primary-dark:  #574fd6;
-  --color-primary-light: #eeeeff;
+  --color-primary:       #6FA67A;
+  --color-primary-dark:  #4F7D58;
+  --color-primary-light: #EAF6EC;
 
   /* Category colors (also used in Chart.js datasets) */
-  --color-food:      #ff6b6b;
-  --color-transport: #feca57;
-  --color-fun:       #48dbfb;
+  --color-food:      #F29E4C;
+  --color-transport: #5B8DEF;
+  --color-fun:       #F4C95D;
 
   /* Neutrals */
-  --color-bg:        #f0f2f8;
-  --color-surface:   #ffffff;
-  --color-border:    #e2e6f0;
-  --color-text:      #2d3436;
-  --color-text-muted:#636e72;
+  --color-bg:        #FAF9F6;
+  --color-surface:   #FFFFFF;
+  --color-border:    #E7E5DF;
+  --color-text:      #2F3A33;
+  --color-text-muted:#6F7C74;
 
   /* Feedback */
   --color-danger:    #ff4757;
